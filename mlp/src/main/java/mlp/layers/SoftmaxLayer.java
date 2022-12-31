@@ -31,10 +31,10 @@ public class SoftmaxLayer implements Layer {
 
 	public DoubleMatrix back(DoubleMatrix output_error, float learning_rate)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		
-		DoubleMatrix input_error = DoubleMatrix.zeros(output_error.getRows(),output_error.getColumns());
-		DoubleMatrix out = MatrixTools.tile(output_error, new int[]{this.input.getRows(), this.input.getColumns()}); 
-		
+//		
+//		DoubleMatrix input_error = DoubleMatrix.zeros(output_error.getRows(),output_error.getColumns());
+//		DoubleMatrix out = MatrixTools.tile(output_error, new int[]{this.input.getRows(), this.input.getColumns()}); 
+//		
 		return null;
 	}
 
