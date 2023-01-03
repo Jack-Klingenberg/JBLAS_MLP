@@ -29,7 +29,7 @@ public class SoftmaxLayer implements Layer {
 		return t1.mul(t2);
 	}
 
-	public DoubleMatrix back(DoubleMatrix output_error, float learning_rate)
+	public DoubleMatrix back(DoubleMatrix output_error, double learning_rate)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 //		
 //		DoubleMatrix input_error = DoubleMatrix.zeros(output_error.getRows(),output_error.getColumns());

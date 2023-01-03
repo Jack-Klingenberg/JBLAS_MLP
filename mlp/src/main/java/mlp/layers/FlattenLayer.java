@@ -18,7 +18,7 @@ public class FlattenLayer implements Layer {
 		return v.reshape(1, this.w * this.h); 
 	}
 
-	public DoubleMatrix back(DoubleMatrix output_error, float learning_rate)
+	public DoubleMatrix back(DoubleMatrix output_error, double learning_rate)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 
 		return output_error.reshape(this.w, this.h); 

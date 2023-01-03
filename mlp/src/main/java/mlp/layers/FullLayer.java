@@ -24,7 +24,7 @@ public class FullLayer implements Layer {
 		return this.input.mmul(this.W).add(this.B);
 	}
 
-	public DoubleMatrix back(DoubleMatrix output_error, float learning_rate) {
+	public DoubleMatrix back(DoubleMatrix output_error, double learning_rate) {
 		DoubleMatrix i_error = output_error.mmul(this.W.transpose());
 		DoubleMatrix w_error = this.input.transpose().mmul(output_error);
 		

@@ -22,8 +22,12 @@ public class ActivationLayer implements Layer {
 		return (DoubleMatrix) f.invoke(obj, new Object[] {v}); 
 	}
 	
-	public DoubleMatrix back(DoubleMatrix output_error, float learning_rate) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public DoubleMatrix back(DoubleMatrix output_error, double learning_rate) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Activations obj = new Activations(); 
 		return ((DoubleMatrix) fprime.invoke(obj, new Object[] {this.input})).mmul(output_error); 
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("Hello, world!");
 	}
 }
