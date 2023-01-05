@@ -71,4 +71,14 @@ public class MatrixTools {
 		for(int i = 0; i < pow; i++) { M.muliColumnVector(M); }
 		return M; 
 	}
+
+	public static DoubleMatrix[][] zip(DoubleMatrix x, DoubleMatrix y) {
+		DoubleMatrix[][] r = new DoubleMatrix[x.rows][2]; 
+		for(int i = 0; i < x.rows; i++) {
+			r[i][0] = x.getRow(i);
+			r[i][1] = y.getRow(i); 
+		}
+
+		return r; 
+	}
 }

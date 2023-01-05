@@ -45,6 +45,14 @@ public class FileTools {
 	public static ArrayList<ArrayList<String>> loadLocalCSV(String path) {
 		return null;
 	}
+
+	public static ArrayList<ArrayList<Object>> parseCSV(ArrayList<ArrayList<String>> csv) {
+		// First check if header exists 
+
+
+
+		return null; 
+	}
 	
 	public static void main(String[] args) throws IOException {
 		String url_text = "https://www.fhfa.gov/HPI_master.csv";
