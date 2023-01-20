@@ -10,7 +10,14 @@ import mlp.functions.Activations;
 public class ActivationLayer implements Layer {
 	Method f, fprime; 
 	DoubleMatrix input; 
-	public ActivationLayer(Method activationfxn, Method activationfxngradient) {
+	public ActivationLayer(String activationfxn) {
+		
+		switch(activationfxn) {
+			case("sigmoid"):
+		
+		}
+		
+		
 		this.f = activationfxn;
 		this.fprime = activationfxngradient; 		
 	}
