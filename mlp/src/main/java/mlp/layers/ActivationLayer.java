@@ -1,37 +1,24 @@
 package mlp.layers;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 import org.jblas.DoubleMatrix;
 
-import mlp.functions.Activations;
+import mlp.functions.MatrixFunction;
 
 public class ActivationLayer implements Layer {
-	Method f, fprime; 
+	MatrixFunction f, fprime; 
 	DoubleMatrix input; 
-	public ActivationLayer(String activationfxn) {
-		
-		switch(activationfxn) {
-			case("sigmoid"):
-		
-		}
-		
-		
-		this.f = activationfxn;
-		this.fprime = activationfxngradient; 		
+	public ActivationLayer(MatrixFunction fi, MatrixFunction fpi) {
+		this.f = fi;
+		this.fprime = fpi; 		
 	}
 	
-	public DoubleMatrix forward(DoubleMatrix v) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public DoubleMatrix forward(DoubleMatrix v) throws IllegalAccessException, IllegalArgumentException {
 		this.input = v; 
-		
-		Activations obj = new Activations(); 
-		return (DoubleMatrix) f.invoke(obj, new Object[] {v}); 
+		return (DoubleMatrix) this.f.apply(v); 
 	}
 	
-	public DoubleMatrix back(DoubleMatrix output_error, double learning_rate) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		Activations obj = new Activations(); 
-		return ((DoubleMatrix) fprime.invoke(obj, new Object[] {this.input})).mmul(output_error); 
+	public DoubleMatrix back(DoubleMatrix output_error, double learning_rate) throws IllegalAccessException, IllegalArgumentException {		
+		return output_error.mmul( ( (DoubleMatrix) fprime.apply(this.input) ) ); 
 	}
 	
 	public static void main(String[] args) {

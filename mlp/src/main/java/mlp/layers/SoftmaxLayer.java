@@ -4,8 +4,6 @@ import java.lang.reflect.InvocationTargetException;
 import org.jblas.DoubleMatrix;
 import org.jblas.MatrixFunctions;
 
-import mlp.jblasextensions.MatrixTools; 
-
 public class SoftmaxLayer implements Layer {
 	private int isize; 
 	
