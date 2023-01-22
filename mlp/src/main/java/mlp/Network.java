@@ -3,7 +3,7 @@ package mlp;
 import org.jblas.DoubleMatrix;
 
 import mlp.functions.MatrixBiFunction;
-import mlp.functions.MatrixBiNorm; 
+import mlp.functions.MatrixBiNorm;
 import mlp.layers.Layer; 
 
 public class Network {
@@ -17,7 +17,7 @@ public class Network {
 	}
 	
 	// Implement verbosity option 
-	public void Compile(MatrixBiNorm erfOperator, MatrixBiFunction erfGradOperator) {
+	public void compile(MatrixBiNorm erfOperator, MatrixBiFunction erfGradOperator) {
 		this.errorFunction = erfOperator; 
 		this.errorGradFunction = erfGradOperator; 
 		
@@ -32,29 +32,30 @@ public class Network {
 		
 		for(int i = 0; i < epochs; i++) {
 			double error = 0;
+				
+			int j = (int) Math.floor(Math.random() * (features.rows + 1)); 
+			DoubleMatrix x = features.getRow(j); 
+			DoubleMatrix y = labels.getRow(j); 
 
-			for(int j = 0; j < features.rows; j++) {
-				DoubleMatrix x = features.getRow(j); 
-				DoubleMatrix y = labels.getRow(j); 
+			DoubleMatrix output = x.dup(); 
 
-				DoubleMatrix output = x.dup(); 
+			for(Layer layer : this.layer_architecture) {
+				output = layer.forward(output); 
+			}
 
-				for(Layer layer : this.layer_architecture) {
-					output = layer.forward(output); 
-				}
+			error += this.errorFunction.apply(output, y); 
 
-				error += this.errorFunction.apply(output, y); 
+			DoubleMatrix output_error = this.errorGradFunction.apply(y, output); 
 
-				DoubleMatrix output_error = this.errorGradFunction.apply(y, output); 
-
-				for(int l = layer_architecture.length-1; l >= 0; l--) {
-					output_error = layer_architecture[l].back(output_error, lr); 
-				}
+			for(int l = layer_architecture.length-1; l >= 0; l--) {
+				output_error = layer_architecture[l].back(output_error, lr); 
 			}
 
 			error /= features.rows; 
-			System.out.println("Epoch " + i + ": error: " + error);
+			System.out.println("Epoch " + (i+1) + ": error: " + error);
 
 		}
 	}
+	
+	
 }

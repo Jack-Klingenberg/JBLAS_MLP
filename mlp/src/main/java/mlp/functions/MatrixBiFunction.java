@@ -4,6 +4,4 @@ import java.util.function.BiFunction;
 
 import org.jblas.DoubleMatrix;
 
-public interface MatrixBiFunction extends BiFunction<DoubleMatrix, DoubleMatrix, DoubleMatrix> {
-
-}
+public interface MatrixBiFunction extends BiFunction<DoubleMatrix, DoubleMatrix, DoubleMatrix> {}

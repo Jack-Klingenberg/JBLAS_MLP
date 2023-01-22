@@ -6,7 +6,7 @@ import mlp.functions.MatrixFunction;
 
 public class ActivationLayer implements Layer {
 	MatrixFunction f, fprime; 
-	DoubleMatrix input; 
+	public DoubleMatrix input; 
 	public ActivationLayer(MatrixFunction fi, MatrixFunction fpi) {
 		this.f = fi;
 		this.fprime = fpi; 		
@@ -17,8 +17,9 @@ public class ActivationLayer implements Layer {
 		return (DoubleMatrix) this.f.apply(v); 
 	}
 	
-	public DoubleMatrix back(DoubleMatrix output_error, double learning_rate) throws IllegalAccessException, IllegalArgumentException {		
-		return output_error.mmul( ( (DoubleMatrix) fprime.apply(this.input) ) ); 
+	public DoubleMatrix back(DoubleMatrix output_error, double learning_rate) throws IllegalAccessException, IllegalArgumentException {
+		
+		return output_error.mul( ( (DoubleMatrix) fprime.apply(this.input) ) ); 
 	}
 	
 	public static void main(String[] args) {

@@ -1,9 +1,6 @@
 package mlp.functions.activations;
 
-import java.util.function.Function;
-
 import org.jblas.DoubleMatrix;
-
 import mlp.functions.MatrixFunction;
 
 public class Sigmoid implements MatrixFunction {

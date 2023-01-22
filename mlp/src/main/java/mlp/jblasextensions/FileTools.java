@@ -123,6 +123,7 @@ public class FileTools {
 			return true;
 		}
 		try {
+			@SuppressWarnings("unused")
 			double d = Double.parseDouble(strNum);
 		} catch (NumberFormatException nfe) {
 			return false;

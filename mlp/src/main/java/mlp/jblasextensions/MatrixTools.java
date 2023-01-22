@@ -81,4 +81,11 @@ public class MatrixTools {
 
 		return r; 
 	}
+
+
+	public static double[] toCategorical(double d) {
+		double[] r = new double[10];
+		r[(int)(d)]=1;
+		return r; 
+	}
 }
