@@ -142,19 +142,4 @@ public class FileTools {
 
 		return r; 
 	}
-	
-	public static void main(String[] args) throws IOException {
-		String url_text = "/Users/jackklingenberg/Downloads/bank/bank.csv";
-		
-		ArrayList<ArrayList<String>> csv = FileTools.loadLocalCSV(url_text, ";", true);
-		
-		//System.out.println(csv.get(2).get(0));
-		//System.out.println((FileTools.parseCSV(csv)));
-		DoubleMatrix parsed = FileTools.parseCSV(csv);
-		String text = FileTools.toCSV(parsed); 
-
-		BufferedWriter writer = new BufferedWriter(new FileWriter("./output.csv")); 
-		writer.write(text);
-		writer.close(); 
-	}
 }

@@ -1,4 +1,4 @@
-package mlp;
+package mlp.tests;
 
 import org.jblas.DoubleMatrix;
 
@@ -9,11 +9,9 @@ import mlp.functions.errors.MSEPrime;
 import mlp.layers.ActivationLayer;
 import mlp.layers.FullLayer;
 import mlp.layers.Layer;
+import mlp.structures.Network;
 
-import mlp.functions.errors.MSE;
-import mlp.functions.errors.MSEPrime;
-
-public class ElementaryClient {
+public class NonSeperableTest {
 	public static void main(String[] args) throws Exception {
 		DoubleMatrix X_train = new DoubleMatrix( new double[][] {{0,1},{1,0},{0,0},{1,1}} ); 
 		DoubleMatrix y_train = new DoubleMatrix( new double[][] {{0},{1},{1},{0}} );
@@ -39,7 +37,7 @@ public class ElementaryClient {
 	
 			System.out.println("+++++");
 			for(int i = 0; i < X_train.rows; i++) {
-				System.out.println("X: " + X_train.getRow(i) + "pred: " + network.forward(X_train.getRow(i)));
+				System.out.println("X: " + X_train.getRow(i) + "pred: " + network.predict(X_train.getRow(i)));
 			}
 			
 		} catch (Exception e) {

@@ -1,21 +1,19 @@
-package mlp;
+package mlp.tests;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.jblas.DoubleMatrix;
 
-import mlp.functions.activations.ReLU;
-import mlp.functions.activations.ReLUPrime;
 import mlp.functions.activations.Sigmoid;
 import mlp.functions.activations.SigmoidPrime;
 import mlp.functions.errors.MSE;
 import mlp.functions.errors.MSEPrime;
 import mlp.jblasextensions.*;
 import mlp.layers.*;
+import mlp.structures.Network;
 
-public class Client {
+public class MnistTest {
 	public static void main(String[] args) throws IOException {
 		// Load the file
 		ArrayList<ArrayList<String>> csv = FileTools.loadLocalCSV("/Users/jackklingenberg/C/JBLAS_MLP/test_data/train1K.csv",",",false);
