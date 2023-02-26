@@ -1,5 +1,8 @@
 package mlp.jblasextensions;
 
+import java.util.Arrays;
+import java.util.Random;
+
 import org.jblas.DoubleMatrix; 
 
 public class MatrixTools {
@@ -88,4 +91,30 @@ public class MatrixTools {
 		r[(int)(d)]=1;
 		return r; 
 	}
+	
+	public static void printFirst(int n, DoubleMatrix m) {
+		for(int i = 0; i < n; i++) {
+			System.out.println(m.getRow(i));
+		}
+	}
+
+	public static int[] createBatch(int batchsize, int max) {
+		Random ra = new Random(); 
+		int[] r = new int[batchsize];
+		
+		boolean zero = false; 
+
+		for(int i = 0; i < batchsize; i++) {
+			r[i] = ra.nextInt(max);
+			
+		}
+		return r; 
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(Arrays.toString(createBatch(10,200)));
+		
+	}
+	 
+	
 }

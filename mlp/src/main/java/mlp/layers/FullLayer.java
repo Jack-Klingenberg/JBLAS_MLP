@@ -5,8 +5,8 @@ import org.jblas.DoubleMatrix;
 public class FullLayer implements Layer {
 	private int isize,osize;
 	
-	private DoubleMatrix W;
-	private DoubleMatrix B; 
+	public DoubleMatrix W; 
+	public DoubleMatrix B; 
 	
 	private DoubleMatrix input; 
 	
@@ -14,7 +14,7 @@ public class FullLayer implements Layer {
 		this.isize = isize; 
 		this.osize = osize; 
 		
-		W = DoubleMatrix.randn(isize,osize).mul(1.0/(osize+isize));
+		W = DoubleMatrix.randn(isize,osize).mul(1.0/Math.sqrt(osize+isize));
 		B = DoubleMatrix.randn(1,osize).mul(Math.sqrt(1.0/(osize+isize)));
 	}
 
@@ -26,7 +26,7 @@ public class FullLayer implements Layer {
 
 	public DoubleMatrix back(DoubleMatrix output_error, double learning_rate) {
 		DoubleMatrix i_error = output_error.mmul(this.W.transpose());
-		DoubleMatrix w_error = this.input.transpose().mmul(output_error);
+		DoubleMatrix w_error = (this.input.transpose()).mmul(output_error);
 		
 		this.W = this.W.sub(w_error.mul(learning_rate));
 		this.B = this.B.sub(output_error.mul(learning_rate));
@@ -42,4 +42,11 @@ public class FullLayer implements Layer {
 	public int getIsize() {
 		return isize;
 	}
+	
+	public static void main(String[] args) {
+		FullLayer layer = new FullLayer(10,10);
+		System.out.println(layer.W);
+		
+	}
+	
 }
